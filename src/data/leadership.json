@@ -5,5 +5,19 @@
     "role": "Preacher",
     "image": "/francis-ayillah.jpg",
     "bio": "Francis Ayillah serves as our dedicated Preacher, leading our congregation with biblical teaching and spiritual guidance."
+  },
+  {
+    "id": 1,
+    "name": "Emmanuel Justice Ofori",
+    "role": "Selected elders and deacons to be ordained on 21st December 2025",
+    "image": "/emmanuel-justice-ofori.jpg",
+    "bio": "Emmanuel Justice Ofori has been selected as an elder/deacon and will be ordained on 21st December 2025."
+  },
+  {
+    "id": 2,
+    "name": "James Acheampong",
+    "role": "Selected elders and deacons to be ordained on 21st December 2025",
+    "image": "/james-acheampong.jpg",
+    "bio": "James Acheampong has been selected as an elder/deacon and will be ordained on 21st December 2025."
   }
 ]
