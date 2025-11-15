@@ -116,7 +116,7 @@ const About = () => {
               >
                 <div className="relative overflow-hidden group">
                   <img
-                    src={leader.image}
+                    src={leader.image.startsWith('/') ? `${process.env.PUBLIC_URL}${leader.image}` : leader.image}
                     alt={leader.name}
                     className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
                   />

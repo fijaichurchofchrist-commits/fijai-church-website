@@ -19,7 +19,7 @@ const Hero = () => {
       <div
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: 'url(/Cover.jpeg)',
+          backgroundImage: `url(${process.env.PUBLIC_URL}/Cover.jpeg)`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
