@@ -19,5 +19,26 @@
     "role": "Selected elder to be ordained on 21st December 2025",
     "image": "/james-acheampong.jpg",
     "bio": "James Acheampong has been selected as an elder and will be ordained on 21st December 2025."
+  },
+  {
+    "id": 3,
+    "name": "Ebenezer Narh",
+    "role": "Selected deacon to be ordained on 21st December 2025",
+    "image": "/ebenezer-narh.jpg",
+    "bio": "Ebenezer Narh has been selected as a deacon and will be ordained on 21st December 2025."
+  },
+  {
+    "id": 4,
+    "name": "Johnson Yorke",
+    "role": "Selected deacon to be ordained on 21st December 2025",
+    "image": "/johnson-yorke.jpg",
+    "bio": "Johnson Yorke has been selected as a deacon and will be ordained on 21st December 2025."
+  },
+  {
+    "id": 5,
+    "name": "Jonah Arhin",
+    "role": "Selected deacon to be ordained on 21st December 2025",
+    "image": "/jonah-arhin.jpg",
+    "bio": "Jonah Arhin has been selected as a deacon and will be ordained on 21st December 2025."
   }
 ]
