@@ -7,13 +7,13 @@ const About = () => {
   const missions = [
     {
       icon: <FaHeart className="text-5xl text-primary" />,
-      title: 'Our Mission',
-      description: 'To glorify God by making disciples of Jesus Christ, growing in faith, and serving our community with love and compassion.',
+      title: 'Mission',
+      description: 'The church of Christ in Fijai exists to fulfill her core mandate of evangelism, edification, and benevolence and to be the pillar and ground of the truth.',
     },
     {
       icon: <FaBible className="text-5xl text-primary" />,
-      title: 'Our Beliefs',
-      description: 'We believe in the Bible as God\'s inspired Word, salvation through Jesus Christ, and the power of the Holy Spirit in our lives.',
+      title: 'Vision',
+      description: 'To spread the saving message of the death, burial, and resurrection of Christ to the environs of Fijai and beyond.',
     },
     {
       icon: <FaUsers className="text-5xl text-primary" />,
