@@ -8,7 +8,7 @@ const About = () => {
     {
       icon: <FaHeart className="text-5xl text-primary" />,
       title: 'Mission',
-      description: 'The church of Christ in Fijai exists to fulfill her core mandate of evangelism, edification, and benevolence and to be the pillar and ground of the truth.',
+      description: 'The Church of Christ in Fijai exists to fulfill her core mandate of evangelism, edification, and benevolence and to be the pillar and ground of the truth.',
     },
     {
       icon: <FaBible className="text-5xl text-primary" />,
