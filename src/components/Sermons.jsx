@@ -8,10 +8,18 @@ const Sermons = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [documents, setDocuments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [showSuggestions, setShowSuggestions] = useState(false);
 
-  // Load documents from Firebase on component mount
+  // Load documents from Firebase on component mount and set up auto-reload
   useEffect(() => {
     loadDocuments();
+
+    // Auto-reload every 30 seconds to get new documents
+    const interval = setInterval(() => {
+      loadDocuments();
+    }, 30000);
+
+    return () => clearInterval(interval);
   }, []);
 
   const loadDocuments = async () => {
@@ -41,6 +49,23 @@ const Sermons = () => {
     const authorMatch = document.author?.toLowerCase().includes(query);
     return titleMatch || descriptionMatch || authorMatch;
   });
+
+  // Get suggestions for autocomplete (limit to 5)
+  const suggestions = searchQuery.trim()
+    ? filteredDocuments.slice(0, 5)
+    : [];
+
+  // Handle suggestion click
+  const handleSuggestionClick = (title) => {
+    setSearchQuery(title);
+    setShowSuggestions(false);
+  };
+
+  // Handle search input change
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+    setShowSuggestions(true);
+  };
 
   // Helper function to get file icon
   const getFileIcon = (fileType) => {
@@ -164,24 +189,50 @@ const Sermons = () => {
         >
           <div className="max-w-md mx-auto">
             <div className="relative">
-              <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 z-10" />
               <input
                 type="text"
                 placeholder="Search by title, description, or author..."
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 rounded-full border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all duration-300"
+                onChange={handleSearchChange}
+                onFocus={() => setShowSuggestions(true)}
+                onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
+                className="w-full pl-12 pr-10 py-3 rounded-full border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all duration-300"
               />
               {searchQuery && (
                 <button
-                  onClick={() => setSearchQuery('')}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  onClick={() => {
+                    setSearchQuery('');
+                    setShowSuggestions(false);
+                  }}
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 z-10"
                 >
                   ×
                 </button>
               )}
+
+              {/* Autocomplete Suggestions Dropdown */}
+              {showSuggestions && suggestions.length > 0 && (
+                <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden z-20">
+                  {suggestions.map((doc) => (
+                    <div
+                      key={doc.id}
+                      onClick={() => handleSuggestionClick(doc.title)}
+                      className="flex items-center px-4 py-3 hover:bg-light-blue cursor-pointer transition-colors border-b border-gray-100 last:border-b-0"
+                    >
+                      <div className="flex-shrink-0 mr-3">
+                        {getFileIcon(doc.fileType)}
+                      </div>
+                      <div className="flex-grow min-w-0">
+                        <p className="font-semibold text-accent truncate">{doc.title}</p>
+                        <p className="text-xs text-gray-500 truncate">{doc.author}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
-            {searchQuery && (
+            {searchQuery && !showSuggestions && (
               <p className="text-center text-sm text-gray-500 mt-2">
                 Found {filteredDocuments.length} document{filteredDocuments.length !== 1 ? 's' : ''}
               </p>
