@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaDownload, FaFileAlt, FaFilePdf, FaFileWord, FaUser, FaFilter, FaBook, FaSpinner } from 'react-icons/fa';
+import { FaDownload, FaFileAlt, FaFilePdf, FaFileWord, FaUser, FaSearch, FaBook, FaSpinner } from 'react-icons/fa';
 import { getDocuments } from '../services/documentService';
 import sermonsData from '../data/sermons.json';
 
 const Sermons = () => {
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [searchQuery, setSearchQuery] = useState('');
   const [documents, setDocuments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -32,14 +32,15 @@ const Sermons = () => {
     }
   };
 
-  // Get unique categories
-  const categories = ['All', ...new Set(documents.map((document) => document.category))];
-
-  // Filter documents
-  const filteredDocuments =
-    selectedCategory === 'All'
-      ? documents
-      : documents.filter((document) => document.category === selectedCategory);
+  // Filter documents by search query
+  const filteredDocuments = documents.filter((document) => {
+    if (!searchQuery.trim()) return true;
+    const query = searchQuery.toLowerCase();
+    const titleMatch = document.title?.toLowerCase().includes(query);
+    const descriptionMatch = document.description?.toLowerCase().includes(query);
+    const authorMatch = document.author?.toLowerCase().includes(query);
+    return titleMatch || descriptionMatch || authorMatch;
+  });
 
   // Helper function to get file icon
   const getFileIcon = (fileType) => {
@@ -138,9 +139,6 @@ const Sermons = () => {
                     <span className="flex items-center">
                       <FaFileAlt className="mr-2" /> {documents[0].pages}
                     </span>
-                    <span className="bg-white/20 px-3 py-1 rounded-full">
-                      {documents[0].category}
-                    </span>
                   </div>
                   <a
                     href={documents[0].downloadUrl}
@@ -156,7 +154,7 @@ const Sermons = () => {
           </motion.div>
         )}
 
-        {/* Filter */}
+        {/* Search */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -164,22 +162,30 @@ const Sermons = () => {
           transition={{ duration: 0.6 }}
           className="mb-8"
         >
-          <div className="flex items-center justify-center flex-wrap gap-3">
-            <FaFilter className="text-primary" />
-            <span className="font-semibold text-accent">Filter by Category:</span>
-            {categories.map((categoryName) => (
-              <button
-                key={categoryName}
-                onClick={() => setSelectedCategory(categoryName)}
-                className={`px-4 py-2 rounded-full font-medium transition-all duration-300 ${
-                  selectedCategory === categoryName
-                    ? 'bg-primary text-white shadow-lg scale-105'
-                    : 'bg-white text-gray-700 hover:bg-light-blue'
-                }`}
-              >
-                {categoryName}
-              </button>
-            ))}
+          <div className="max-w-md mx-auto">
+            <div className="relative">
+              <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Search by title, description, or author..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-12 pr-4 py-3 rounded-full border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all duration-300"
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                >
+                  ×
+                </button>
+              )}
+            </div>
+            {searchQuery && (
+              <p className="text-center text-sm text-gray-500 mt-2">
+                Found {filteredDocuments.length} document{filteredDocuments.length !== 1 ? 's' : ''}
+              </p>
+            )}
           </div>
         </motion.div>
 
@@ -206,11 +212,6 @@ const Sermons = () => {
                   >
                     {getFileIcon(document.fileType)}
                   </motion.div>
-                </div>
-                <div className="absolute top-4 right-4">
-                  <span className="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-primary">
-                    {document.category}
-                  </span>
                 </div>
                 <div className="absolute top-4 left-4">
                   <span className="bg-accent text-white px-3 py-1 rounded-full text-xs font-semibold">
@@ -257,7 +258,7 @@ const Sermons = () => {
 
         {filteredDocuments.length === 0 && (
           <div className="text-center py-12 text-gray-500">
-            No documents found for this category.
+            {searchQuery ? `No documents found for "${searchQuery}"` : 'No documents available yet.'}
           </div>
         )}
         </>

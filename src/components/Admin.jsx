@@ -26,7 +26,6 @@ const Admin = ({ onLogout }) => {
   const [formData, setFormData] = useState({
     title: '',
     author: '',
-    category: '',
     description: '',
     pages: ''
   });
@@ -36,14 +35,6 @@ const Admin = ({ onLogout }) => {
   const [message, setMessage] = useState({ type: '', text: '' });
   const [documents, setDocuments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
-  const categories = [
-    'Faith Journey',
-    'Spiritual Foundations',
-    'Living Like Christ',
-    'Gospel Truths',
-    'Church Family'
-  ];
 
   // Load documents on component mount
   useEffect(() => {
@@ -100,7 +91,6 @@ const Admin = ({ onLogout }) => {
       const documentData = {
         title: formData.title,
         author: formData.author,
-        category: formData.category,
         description: formData.description,
         pages: formData.pages,
         fileType: getFileType(selectedFile.name),
@@ -116,7 +106,6 @@ const Admin = ({ onLogout }) => {
       setFormData({
         title: '',
         author: '',
-        category: '',
         description: '',
         pages: ''
       });
@@ -249,26 +238,6 @@ const Admin = ({ onLogout }) => {
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none"
                   placeholder="e.g., Elder James Mensah"
                 />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Category *
-                </label>
-                <select
-                  name="category"
-                  value={formData.category}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none"
-                >
-                  <option value="">Select a category</option>
-                  {categories.map((cat) => (
-                    <option key={cat} value={cat}>
-                      {cat}
-                    </option>
-                  ))}
-                </select>
               </div>
 
               <div>
@@ -409,8 +378,6 @@ const Admin = ({ onLogout }) => {
                       <h4 className="font-bold text-accent truncate">{doc.title}</h4>
                       <p className="text-sm text-gray-600 truncate">{doc.author}</p>
                       <div className="flex items-center space-x-3 mt-1 text-xs text-gray-500">
-                        <span>{doc.category}</span>
-                        <span>•</span>
                         <span>{doc.fileSize}</span>
                         <span>•</span>
                         <span>{doc.pages}</span>
