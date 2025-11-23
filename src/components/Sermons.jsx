@@ -55,9 +55,9 @@ const Sermons = () => {
     ? filteredDocuments.slice(0, 5)
     : [];
 
-  // Handle suggestion click
-  const handleSuggestionClick = (title) => {
-    setSearchQuery(title);
+  // Handle suggestion click - open/download the document
+  const handleSuggestionClick = (downloadUrl) => {
+    window.open(downloadUrl, '_blank');
     setShowSuggestions(false);
   };
 
@@ -217,7 +217,7 @@ const Sermons = () => {
                   {suggestions.map((doc) => (
                     <div
                       key={doc.id}
-                      onClick={() => handleSuggestionClick(doc.title)}
+                      onClick={() => handleSuggestionClick(doc.downloadUrl)}
                       className="flex items-center px-4 py-3 hover:bg-light-blue cursor-pointer transition-colors border-b border-gray-100 last:border-b-0"
                     >
                       <div className="flex-shrink-0 mr-3">
