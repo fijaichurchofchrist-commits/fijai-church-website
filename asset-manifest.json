@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/fijai-church-website/static/css/main.084db000.css",
-    "main.js": "/fijai-church-website/static/js/main.b61afd58.js",
+    "main.css": "/fijai-church-website/static/css/main.7b48bbf1.css",
+    "main.js": "/fijai-church-website/static/js/main.5b630569.js",
     "static/js/453.db44ec7e.chunk.js": "/fijai-church-website/static/js/453.db44ec7e.chunk.js",
     "index.html": "/fijai-church-website/index.html",
-    "main.084db000.css.map": "/fijai-church-website/static/css/main.084db000.css.map",
-    "main.b61afd58.js.map": "/fijai-church-website/static/js/main.b61afd58.js.map",
+    "main.7b48bbf1.css.map": "/fijai-church-website/static/css/main.7b48bbf1.css.map",
+    "main.5b630569.js.map": "/fijai-church-website/static/js/main.5b630569.js.map",
     "453.db44ec7e.chunk.js.map": "/fijai-church-website/static/js/453.db44ec7e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.084db000.css",
-    "static/js/main.b61afd58.js"
+    "static/css/main.7b48bbf1.css",
+    "static/js/main.5b630569.js"
   ]
 }
