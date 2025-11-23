@@ -2,7 +2,7 @@
   "name": "fijai-church",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://fijaichurchofchrist-commits.github.io/fijai-church-website",
+  "homepage": "https://fijaicoc.org",
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@testing-library/dom": "^10.4.1",
