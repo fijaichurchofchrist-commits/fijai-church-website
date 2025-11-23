@@ -43,9 +43,11 @@ const Footer = () => {
       setTimeout(() => setSubscribeMessage(''), 5000);
     } catch (error) {
       console.error('Error subscribing to newsletter:', error);
+      console.error('Error code:', error.code);
+      console.error('Error message:', error.message);
       setMessageType('error');
-      setSubscribeMessage('Something went wrong. Please try again later.');
-      setTimeout(() => setSubscribeMessage(''), 4000);
+      setSubscribeMessage(`Error: ${error.message || 'Something went wrong. Please try again later.'}`);
+      setTimeout(() => setSubscribeMessage(''), 8000);
     } finally {
       setIsSubscribing(false);
     }
