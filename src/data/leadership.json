@@ -9,36 +9,36 @@
   {
     "id": 1,
     "name": "Emmanuel Justice Ofori",
-    "role": "Selected elder to be ordained on 21st December 2025",
+    "role": "Elder",
     "image": "/emmanuel-justice-ofori.jpg",
-    "bio": "Emmanuel Justice Ofori has been selected as an elder and will be ordained on 21st December 2025."
+    "bio": "Emmanuel Justice Ofori was ordained as an Elder on 21st December 2025."
   },
   {
     "id": 2,
     "name": "James Acheampong",
-    "role": "Selected elder to be ordained on 21st December 2025",
+    "role": "Elder",
     "image": "/james-acheampong.jpg",
-    "bio": "James Acheampong has been selected as an elder and will be ordained on 21st December 2025."
+    "bio": "James Acheampong was ordained as an Elder on 21st December 2025."
   },
   {
     "id": 3,
     "name": "Ebenezer Narh",
-    "role": "Selected deacon to be ordained on 21st December 2025",
+    "role": "Deacon",
     "image": "/ebenezer-narh.jpg",
-    "bio": "Ebenezer Narh has been selected as a deacon and will be ordained on 21st December 2025."
+    "bio": "Ebenezer Narh was ordained as a Deacon on 21st December 2025."
   },
   {
     "id": 4,
     "name": "Johnson Yorke",
-    "role": "Selected deacon to be ordained on 21st December 2025",
+    "role": "Deacon",
     "image": "/johnson-yorke.jpg",
-    "bio": "Johnson Yorke has been selected as a deacon and will be ordained on 21st December 2025."
+    "bio": "Johnson Yorke was ordained as a Deacon on 21st December 2025."
   },
   {
     "id": 5,
     "name": "Jonah Arhin",
-    "role": "Selected deacon to be ordained on 21st December 2025",
+    "role": "Deacon",
     "image": "/jonah-arhin.jpg",
-    "bio": "Jonah Arhin has been selected as a deacon and will be ordained on 21st December 2025."
+    "bio": "Jonah Arhin was ordained as a Deacon on 21st December 2025."
   }
 ]
